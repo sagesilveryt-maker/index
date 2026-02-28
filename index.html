@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; }
+        .header { color: #FFA500; font-size: 24px; font-weight: bold; margin-top: 20px; }
+        .button-card {
+            background-color: #FFB347; color: black;
+            margin: 10px auto; padding: 20px; width: 80%;
+            border-radius: 15px; font-weight: bold; cursor: pointer;
+        }
+        .status-grid { display: flex; justify-content: space-around; margin-top: 20px; }
+        .status-box { background: #333; padding: 10px; border-radius: 10px; min-width: 80px; }
+    </style>
+</head>
+<body>
+    <div class="header">CLOUD BOT INTERFACE</div>
+    <p>Welcome, John! | v1.0</p>
+
+    <div class="button-card" onclick="sendData('newTask')">➕ New Task</div>
+    <div class="button-card" onclick="sendData('manageFiles')">📂 Manage Files</div>
+    <div class="button-card">⚙️ Settings</div>
+
+    <div class="status-grid">
+        <div class="status-box">Tasks: 12</div>
+        <div class="status-box">Files: 154</div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Opens the app to full height
+
+        function sendData(command) {
+            tg.sendData(command); // Sends string back to your Python bot
+            tg.close();
+        }
+    </script>
+</body>
+</html>
